@@ -1,0 +1,23 @@
+PImage img;
+void setup(){
+size(670,676);
+frameRate(30);
+img=loadImage("dear.png");
+}
+void draw(){
+  background(img);
+  stroke(0);
+  strokeWeight(5);
+  strokeCap(PROJECT);
+  line(0,670,0,676,20,0.5);
+}
+void line(float startX, float endX, float startY, float endY, float offSet, float vel) {
+  float mRange = abs(endX-startX);
+  translate(startX, startY);
+  for (float j= -1*mRange; j < mRange; j=j+offSet) {
+    float x = j+(vel*frameCount)%(mRange);
+    if (x>0&&x<mRange) {
+      line (x, 0, x, endY-startY);
+    }
+  }
+}
